@@ -1,25 +1,18 @@
 import React from 'react';
 import HornedBeast from './HornedBeast';
+import data from "./assets/data.json";
 
 class Main extends React.Component{
   render(){
     return (
       <>
-        <HornedBeast
-          title={"Bill"}
-          imageUrl={"https://www.fillmurray.com/460/300"}
-          desc={"Bill Murray"}
-        />
-        <HornedBeast
-          title={"Bill"}
-          imageUrl={"https://www.fillmurray.com/460/300"}
-          desc={"Bill Murray"}
-        />
-        <HornedBeast
-          title={"Bill"}
-          imageUrl={"https://www.fillmurray.com/460/300"}
-          desc={"Bill Murray"}
-        />
+        {data.map(obj => {
+          return <HornedBeast
+          src ={obj.image_url}    title ={obj.title}
+          desc ={obj.description} keyword ={obj.keyword}
+          horns ={obj.horns}      key ={obj._id}
+          />
+        })}
       </>
     );
   }
