@@ -1,6 +1,9 @@
 //import
 import React from 'react';
 import './App.css';
+import Header from './Header';
+import Footer from './Footer';
+import Main from './Main';
 
 //extend
 class App extends React.Component {
@@ -10,8 +13,9 @@ class App extends React.Component {
     // javascript that looks like html
     return (
       <>
-        <h1>bingbong</h1>
-        <h2>wakka wakka</h2>
+        < Header />
+        < Main />
+        < Footer />
       </>
     );
   }
