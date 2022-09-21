@@ -16,6 +16,8 @@ class HornedBeast extends React.Component{
       clicked: this.state.clicked + 1,
       desc: this.props.desc + "❤️: " + (this.state.clicked+1),
     });
+    console.log(this.props.id);
+    this.props.startDisp(this.props.id);
   }
 
   render(){
