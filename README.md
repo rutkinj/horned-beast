@@ -30,4 +30,14 @@ Finish time: 3:00
 
 Actual time needed to complete: 20min
 
+## #4 Display Modal
+
+Estimate of time needed to complete: 30min
+
+Start time: 2:30
+
+Finish time: 3:15
+
+Actual time needed to complete: 45min
+
 ### Joe Rutkin made this
