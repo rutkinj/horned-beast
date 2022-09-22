@@ -19,7 +19,7 @@ class App extends React.Component {
     this.state={
       modalDisp: false,
       beastToDisp: {},
-      selectedBeasts:[],
+      beastsByHorns: data,
     }
   }
   
@@ -28,8 +28,18 @@ class App extends React.Component {
   startDisp = (key) => {
     let selectedBeast = data.filter(beast => beast._id === key);
     this.setState({beastToDisp: selectedBeast[0]});
-    console.log(this.state.beastToDisp);
     this.setState({modalDisp: true});
+  }
+
+  selectByHorns = (horns) => {
+    let retBeasts
+    if (horns){
+      retBeasts = data.filter(beast => beast.horns === Number(horns));
+    } else {
+      retBeasts = data;
+    }
+
+    this.setState({beastsByHorns: retBeasts});
   }
 
   render(){
@@ -39,8 +49,8 @@ class App extends React.Component {
     return (
       <Container>
         < Header />
-        < HornsSelector />
-        < Main data={data} startDisp={this.startDisp}/>
+        < HornsSelector ditdah={'hooray'} selectByHorns={this.selectByHorns}/>
+        < Main data={this.state.beastsByHorns} startDisp={this.startDisp}/>
         < BeastDisp modalDisp={this.state.modalDisp} beastToDisp={this.state.beastToDisp} stopDisp={this.stopDisp}/>
         < Footer />
       </Container>
