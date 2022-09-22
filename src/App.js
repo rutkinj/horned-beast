@@ -6,6 +6,8 @@ import Header from './Header';
 import Footer from './Footer';
 import Main from './Main';
 import BeastDisp from './assets/Modal';
+import HornsSelector from './assets/HornsSelector';
+import { Container } from 'react-bootstrap';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -17,6 +19,7 @@ class App extends React.Component {
     this.state={
       modalDisp: false,
       beastToDisp: {},
+      beastsByHorns: data,
     }
   }
   
@@ -25,8 +28,18 @@ class App extends React.Component {
   startDisp = (key) => {
     let selectedBeast = data.filter(beast => beast._id === key);
     this.setState({beastToDisp: selectedBeast[0]});
-    console.log(this.state.beastToDisp);
     this.setState({modalDisp: true});
+  }
+
+  selectByHorns = (horns) => {
+    let retBeasts
+    if (horns){
+      retBeasts = data.filter(beast => beast.horns === Number(horns));
+    } else {
+      retBeasts = data;
+    }
+
+    this.setState({beastsByHorns: retBeasts});
   }
 
   render(){
@@ -34,12 +47,13 @@ class App extends React.Component {
     //inside of this return is all JSX
     // javascript that looks like html
     return (
-      <>
+      <Container>
         < Header />
-        < Main data={data} startDisp={this.startDisp}/>
+        < HornsSelector ditdah={'hooray'} selectByHorns={this.selectByHorns}/>
+        < Main data={this.state.beastsByHorns} startDisp={this.startDisp}/>
         < BeastDisp modalDisp={this.state.modalDisp} beastToDisp={this.state.beastToDisp} stopDisp={this.stopDisp}/>
         < Footer />
-      </>
+      </Container>
     );
   }
 
