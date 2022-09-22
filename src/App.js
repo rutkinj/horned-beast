@@ -6,6 +6,8 @@ import Header from './Header';
 import Footer from './Footer';
 import Main from './Main';
 import BeastDisp from './assets/Modal';
+import HornsSelector from './assets/HornsSelector';
+import { Container } from 'react-bootstrap';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -17,6 +19,7 @@ class App extends React.Component {
     this.state={
       modalDisp: false,
       beastToDisp: {},
+      selectedBeasts:[],
     }
   }
   
@@ -34,12 +37,13 @@ class App extends React.Component {
     //inside of this return is all JSX
     // javascript that looks like html
     return (
-      <>
+      <Container>
         < Header />
+        < HornsSelector />
         < Main data={data} startDisp={this.startDisp}/>
         < BeastDisp modalDisp={this.state.modalDisp} beastToDisp={this.state.beastToDisp} stopDisp={this.stopDisp}/>
         < Footer />
-      </>
+      </Container>
     );
   }
 
